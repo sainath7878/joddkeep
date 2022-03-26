@@ -13,6 +13,10 @@
   width: 70%;
 }
 
+.banner-text > h1 > div {
+  margin-top: 2rem;
+}
+
 .app-desc {
   width: 80%;
   line-height: 1.5;
