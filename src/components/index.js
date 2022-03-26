@@ -1,5 +1,0 @@
-export { Header } from "./header/Header"
-export { Footer } from "./footer/Footer"
-export { Hero } from "./hero/Hero"
-export { SignIn } from "components/authorization/signin/SignIn"
-export { SignUp } from "components/authorization/signup/SignUp"
