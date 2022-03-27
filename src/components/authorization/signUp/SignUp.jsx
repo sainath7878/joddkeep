@@ -30,7 +30,7 @@ function SignUp() {
     confirmPassword: true,
   });
 
-  const signUpValidator = (event, signUpDetails) => {
+  const signUpValidator = (event) => {
     event.preventDefault();
     const { fullName, email, password, confirmPassword } = signUpDetails;
 
@@ -129,7 +129,7 @@ function SignUp() {
         </div>
         <button
           className="btn btn-secondary fs-s"
-        onClick={(e)=>signUpValidator(e, signUpDetails)}
+        onClick={(e)=>signUpValidator(e)}
         >
           <BiDoorOpenFill /> SIGNUP
         </button>

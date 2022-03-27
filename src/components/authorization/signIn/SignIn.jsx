@@ -1,9 +1,5 @@
 import "../authorization.css";
-import {
-  BiDoorOpenFill,
-  BiEyeFill,
-  BiEyeSlashFill,
-} from "assets/icons/Icons";
+import { BiDoorOpenFill, BiEyeFill, BiEyeSlashFill } from "assets/icons/Icons";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -22,12 +18,13 @@ function SignIn() {
     return () => clearTimeout(timeOut);
   }, [error.state]);
 
-  const formHandler = (event, { email, password }) => {
+  const formHandler = (event) => {
     event.preventDefault();
+    const { email, password } = loginDetails;
     if (!email && !password) {
       setError({ msg: "Please fill all the fields", state: true });
     } else {
-        console.log("From SIgnin")
+      console.log("From SIgnin");
     }
   };
 
@@ -62,16 +59,13 @@ function SignIn() {
           )}
         </span>
       </div>
-      <button
-        type="button"
-        className="btn btn-secondary-outline fs-s"
-      >
+      <button type="button" className="btn btn-secondary-outline fs-s">
         <BiDoorOpenFill />
         LOGIN WITH TEST CREDENTIALS
       </button>
       <button
         className="btn btn-secondary fs-s"
-        onClick={(e) => formHandler(e, loginDetails)}
+        onClick={(e) => formHandler(e)}
       >
         <BiDoorOpenFill />
         LOGIN
