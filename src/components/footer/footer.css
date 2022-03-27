@@ -1,0 +1,15 @@
+.footer{
+    background-color: var(--PRIMARY-COLOR);
+    color: var(--BACKGROUND-COLOR);
+    padding: 3rem;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.footer-link{
+    color: var(--BACKGROUND-COLOR);
+}
+
+.footer-link:hover{
+    color: var(--SECONDARY-COLOR)
+}

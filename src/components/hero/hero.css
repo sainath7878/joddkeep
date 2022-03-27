@@ -1,0 +1,57 @@
+.main {
+  display: inline-flex;
+  margin-top: 2rem;
+  padding: 2rem;
+  align-items: center;
+}
+
+.banner-text {
+  display: flex;
+  flex-direction: column;
+  margin: 5rem 3rem;
+  gap: 2rem;
+  width: 70%;
+}
+
+.banner-text > h1 > div {
+  margin-top: 2rem;
+}
+
+.app-desc {
+  width: 80%;
+  line-height: 1.5;
+}
+
+.border-sm {
+  border-radius: 2px;
+}
+
+.banner-image{
+  margin-right: 10rem;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .banner-text{
+    width: 100%;
+  }
+
+  .app-desc{
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+
+  .banner-image{
+    display: none;
+  }
+
+  .banner-text{
+    width: 100%;
+  }
+
+  .app-desc{
+    width: 100%;
+  }
+}

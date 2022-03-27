@@ -1,1 +1,15 @@
 @import url("https://jodd-component-css.netlify.app/main.css");
+
+.flex-1 {
+  flex-grow: 1;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 20rem);
+}
+
+a {
+  color: var(--PRIMARY-COLOR);
+}
