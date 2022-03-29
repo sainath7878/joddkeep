@@ -5,8 +5,8 @@ function AuthorizationPage() {
   const location = useLocation();
 
   return (
-    <div className="container">
-      {location.pathname === "/signin" ? <SignIn className="flex-1"/> : <SignUp className="flex-1"/>}
+    <div className="flex-1">
+      {location.pathname === "/signin" ? <SignIn /> : <SignUp />}
     </div>
   );
 }

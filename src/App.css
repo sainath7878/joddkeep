@@ -1,13 +1,11 @@
 @import url("https://jodd-component-css.netlify.app/main.css");
 
-.flex-1 {
-  flex-grow: 1;
+:root {
+  --SIDE-NAVBAR-COLOR: #e5e7eb;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  min-height: calc(100vh - 20rem);
+.flex-1 {
+  flex-grow: 1;
 }
 
 a {

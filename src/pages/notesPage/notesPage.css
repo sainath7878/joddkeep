@@ -1,0 +1,5 @@
+.notes {
+  width: calc(100% - 25rem);
+  margin: 4rem 2rem 2rem 5rem;
+  min-height: 100vh;
+}
