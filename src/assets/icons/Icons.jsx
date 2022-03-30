@@ -1,3 +1,14 @@
+export function BiArchive(props) {
+  return (
+    <svg width="1em" height="1em" viewBox="0 0 16 16" {...props}>
+      <path
+        fill="currentColor"
+        d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"
+      ></path>
+    </svg>
+  );
+}
+
 export function BiDashLg(props) {
   return (
     <svg width="1em" height="1em" viewBox="0 0 16 16" {...props}>
@@ -54,6 +65,17 @@ export function BiGithub(props) {
   );
 }
 
+export function BiHouseDoor(props) {
+  return (
+    <svg width="1em" height="1em" viewBox="0 0 16 16" {...props}>
+      <path
+        fill="currentColor"
+        d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5l5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"
+      ></path>
+    </svg>
+  );
+}
+
 export function BiLinkedin(props) {
   return (
     <svg width="1em" height="1em" viewBox="0 0 16 16" {...props}>
@@ -77,6 +99,39 @@ export function BiList(props) {
   );
 }
 
+export function BiPalette(props) {
+  return (
+    <svg width="1em" height="1em" viewBox="0 0 16 16" {...props}>
+      <g fill="currentColor">
+        <path d="M8 5a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3zm4 3a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3zM5.5 7a1.5 1.5 0 1 1-3 0a1.5 1.5 0 0 1 3 0zm.5 6a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3z"></path>
+        <path d="M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8zm-8 7c.611 0 .654-.171.655-.176c.078-.146.124-.464.07-1.119c-.014-.168-.037-.37-.061-.591c-.052-.464-.112-1.005-.118-1.462c-.01-.707.083-1.61.704-2.314c.369-.417.845-.578 1.272-.618c.404-.038.812.026 1.16.104c.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266c.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7z"></path>
+      </g>
+    </svg>
+  );
+}
+
+export function BiPaletteFill(props) {
+  return (
+    <svg width="1em" height="1em" viewBox="0 0 16 16" {...props}>
+      <path
+        fill="currentColor"
+        d="M12.433 10.07C14.133 10.585 16 11.15 16 8a8 8 0 1 0-8 8c1.996 0 1.826-1.504 1.649-3.08c-.124-1.101-.252-2.237.351-2.92c.465-.527 1.42-.237 2.433.07zM8 5a1.5 1.5 0 1 1 0-3a1.5 1.5 0 0 1 0 3zm4.5 3a1.5 1.5 0 1 1 0-3a1.5 1.5 0 0 1 0 3zM5 6.5a1.5 1.5 0 1 1-3 0a1.5 1.5 0 0 1 3 0zm.5 6.5a1.5 1.5 0 1 1 0-3a1.5 1.5 0 0 1 0 3z"
+      ></path>
+    </svg>
+  );
+}
+
+export function BiPencil(props) {
+  return (
+    <svg width="1em" height="1em" viewBox="0 0 16 16" {...props}>
+      <path
+        fill="currentColor"
+        d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793L14.793 3.5L12.5 1.207L11.207 2.5zm1.586 3L10.5 3.207L4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106l-1.528 3.821l3.821-1.528l.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"
+      ></path>
+    </svg>
+  );
+}
+
 export function BiPersonCircle(props) {
   return (
     <svg width="1em" height="1em" viewBox="0 0 16 16" {...props}>
@@ -85,6 +140,42 @@ export function BiPersonCircle(props) {
         <path
           fillRule="evenodd"
           d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+        ></path>
+      </g>
+    </svg>
+  );
+}
+
+export function BiPin(props) {
+  return (
+    <svg width="1em" height="1em" viewBox="0 0 16 16" {...props}>
+      <path
+        fill="currentColor"
+        d="M4.146.146A.5.5 0 0 1 4.5 0h7a.5.5 0 0 1 .5.5c0 .68-.342 1.174-.646 1.479c-.126.125-.25.224-.354.298v4.431l.078.048c.203.127.476.314.751.555C12.36 7.775 13 8.527 13 9.5a.5.5 0 0 1-.5.5h-4v4.5c0 .276-.224 1.5-.5 1.5s-.5-1.224-.5-1.5V10h-4a.5.5 0 0 1-.5-.5c0-.973.64-1.725 1.17-2.189A5.921 5.921 0 0 1 5 6.708V2.277a2.77 2.77 0 0 1-.354-.298C4.342 1.674 4 1.179 4 .5a.5.5 0 0 1 .146-.354zm1.58 1.408l-.002-.001l.002.001zm-.002-.001l.002.001A.5.5 0 0 1 6 2v5a.5.5 0 0 1-.276.447h-.002l-.012.007l-.054.03a4.922 4.922 0 0 0-.827.58c-.318.278-.585.596-.725.936h7.792c-.14-.34-.407-.658-.725-.936a4.915 4.915 0 0 0-.881-.61l-.012-.006h-.002A.5.5 0 0 1 10 7V2a.5.5 0 0 1 .295-.458a1.775 1.775 0 0 0 .351-.271c.08-.08.155-.17.214-.271H5.14c.06.1.133.191.214.271a1.78 1.78 0 0 0 .37.282z"
+      ></path>
+    </svg>
+  );
+}
+
+export function BiPinFill(props) {
+  return (
+    <svg width="1em" height="1em" viewBox="0 0 16 16" {...props}>
+      <path
+        fill="currentColor"
+        d="M4.146.146A.5.5 0 0 1 4.5 0h7a.5.5 0 0 1 .5.5c0 .68-.342 1.174-.646 1.479c-.126.125-.25.224-.354.298v4.431l.078.048c.203.127.476.314.751.555C12.36 7.775 13 8.527 13 9.5a.5.5 0 0 1-.5.5h-4v4.5c0 .276-.224 1.5-.5 1.5s-.5-1.224-.5-1.5V10h-4a.5.5 0 0 1-.5-.5c0-.973.64-1.725 1.17-2.189A5.921 5.921 0 0 1 5 6.708V2.277a2.77 2.77 0 0 1-.354-.298C4.342 1.674 4 1.179 4 .5a.5.5 0 0 1 .146-.354z"
+      ></path>
+    </svg>
+  );
+}
+
+export function BiTrash(props) {
+  return (
+    <svg width="1em" height="1em" viewBox="0 0 16 16" {...props}>
+      <g fill="currentColor">
+        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
+        <path
+          fillRule="evenodd"
+          d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
         ></path>
       </g>
     </svg>
@@ -130,6 +221,17 @@ export function IcBaselineLogout(props) {
       <path
         fill="currentColor"
         d="m17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"
+      ></path>
+    </svg>
+  );
+}
+
+export function MdiLabelOutline(props) {
+  return (
+    <svg width="1em" height="1em" viewBox="0 0 24 24" {...props}>
+      <path
+        fill="currentColor"
+        d="M16 17H5V7h11l3.55 5m-1.92-6.16C17.27 5.33 16.67 5 16 5H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h11c.67 0 1.27-.34 1.63-.85L22 12l-4.37-6.16Z"
       ></path>
     </svg>
   );

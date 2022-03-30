@@ -2,6 +2,7 @@ import "../authorization.css";
 import { BiDoorOpenFill, BiEyeFill, BiEyeSlashFill } from "assets/icons/Icons";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useAuth } from "context/index";
 
 function SignIn() {
   const [loginDetails, setLoginDetails] = useState({
@@ -9,14 +10,14 @@ function SignIn() {
     password: "",
   });
   const [showPassword, setShowPassword] = useState(true);
-  const [error, setError] = useState({ msg: "", state: false });
+  const { signInHandler, error, setError } = useAuth();
 
   useEffect(() => {
     const timeOut = setTimeout(() => {
       setError({ msg: "", state: false });
     }, 3000);
     return () => clearTimeout(timeOut);
-  }, [error.state]);
+  }, [setError, error.state]);
 
   const formHandler = (event) => {
     event.preventDefault();
@@ -24,7 +25,7 @@ function SignIn() {
     if (!email && !password) {
       setError({ msg: "Please fill all the fields", state: true });
     } else {
-      console.log("From SIgnin");
+      signInHandler(loginDetails);
     }
   };
 
@@ -59,7 +60,16 @@ function SignIn() {
           )}
         </span>
       </div>
-      <button type="button" className="btn btn-secondary-outline fs-s">
+      <button
+        type="button"
+        className="btn btn-secondary-outline fs-s"
+        onClick={() =>
+          signInHandler({
+            email: "johndoe@gmail.com",
+            password: "johnDoe123",
+          })
+        }
+      >
         <BiDoorOpenFill />
         LOGIN WITH TEST CREDENTIALS
       </button>

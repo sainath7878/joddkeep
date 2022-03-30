@@ -1,21 +1,11 @@
 import "../authorization.css";
-import {
-  BiDoorOpenFill,
-  BiEyeFill,
-  BiEyeSlashFill,
-} from "assets/icons/Icons";
+import { BiDoorOpenFill, BiEyeFill, BiEyeSlashFill } from "assets/icons/Icons";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-
+import { useAuth } from "context";
 
 function SignUp() {
-  useEffect(() => {
-    const timeOut = setTimeout(() => {
-      setError({ msg: "", state: false });
-    }, 5000);
-    return () => clearTimeout(timeOut);
-  });
-
+  const { signUpHandler, error, setError } = useAuth();
   const [signUpDetails, setSignUpDetails] = useState({
     fullName: "",
     email: "",
@@ -24,17 +14,23 @@ function SignUp() {
   });
 
   const validation = /^(?=.*\d)(?=.*[a-z])([!@#$%]*).{5,}$/;
-  const [error, setError] = useState({ msg: "", state: false });
   const [showPassword, setShowPassword] = useState({
     password: true,
     confirmPassword: true,
   });
 
+  useEffect(() => {
+    const timeOut = setTimeout(() => {
+      setError({ msg: "", state: false });
+    }, 5000);
+    return () => clearTimeout(timeOut);
+  }, [error.state, setError]);
+
   const signUpValidator = (event) => {
     event.preventDefault();
-    const { fullName, email, password, confirmPassword } = signUpDetails;
+    const { firstName, email, password, confirmPassword } = signUpDetails;
 
-    if (!fullName && !email && !password && !confirmPassword) {
+    if (!firstName && !email && !password && !confirmPassword) {
       setError({ msg: "Please fill all the fields", state: true });
     } else if (!password.match(validation)) {
       setError({
@@ -46,7 +42,9 @@ function SignUp() {
         msg: "Both passwords must match",
         state: true,
       });
-    } 
+    } else {
+      signUpHandler(signUpDetails);
+    }
   };
 
   return (
@@ -60,7 +58,7 @@ function SignUp() {
           placeholder="Enter full name"
           className={`form-input ${error.state ? "error-border" : ""}`}
           onChange={(e) =>
-            setSignUpDetails({ ...signUpDetails, fullName: e.target.value })
+            setSignUpDetails({ ...signUpDetails, firstName: e.target.value })
           }
         />
         <input
@@ -129,7 +127,7 @@ function SignUp() {
         </div>
         <button
           className="btn btn-secondary fs-s"
-        onClick={(e)=>signUpValidator(e)}
+          onClick={(e) => signUpValidator(e)}
         >
           <BiDoorOpenFill /> SIGNUP
         </button>

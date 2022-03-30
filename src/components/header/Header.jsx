@@ -1,14 +1,22 @@
 import React from "react";
-import { Link  } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 import "./header.css";
-
 import {
   BiList,
-  BiPersonCircle
+  BiPersonCircle,
+  IcBaselineLogout,
 } from "assets/icons/Icons.jsx";
+import { useAuth } from "context";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+  const { authState, authDispatch } = useAuth();
+  const navigate = useNavigate();
+
+  const logoutHandler = () => {
+    authDispatch({ type: "LOGOUT" });
+    navigate("/");
+  };
   return (
     <div>
       <header>
@@ -26,10 +34,19 @@ function Header() {
           </div>
 
           <div className="nav-section login">
-            <Link to="/signin">
-              <BiPersonCircle className="fs-ml nav-link" />
-            </Link>
-            <p>Hi user</p>
+            {authState.isLoggedIn ? (
+              <>
+                <IcBaselineLogout
+                  className="fs-ml nav-link logout"
+                  onClick={() => logoutHandler()}
+                />
+                <p>Hi, {authState.firstName}</p>
+              </>
+            ) : (
+              <Link to="/signin">
+                <BiPersonCircle className="fs-ml nav-link" />
+              </Link>
+            )}
           </div>
         </nav>
       </header>
