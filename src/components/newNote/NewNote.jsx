@@ -9,7 +9,7 @@ function NewNote() {
       </button>
       <div className="input-notes">
         <textarea rows="1" placeholder="Title" maxLength="30"></textarea>
-        <textarea rows="1" placeholder="Take notes ...."></textarea>
+        <textarea rows="3" placeholder="Take notes ...."></textarea>
       </div>
       <div className="input-cta">
         <div className="input-cta-section flex-1">

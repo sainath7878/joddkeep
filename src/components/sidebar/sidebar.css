@@ -7,9 +7,6 @@ ul {
   width: 25rem;
   background-color: var(--SIDE-NAVBAR-COLOR);
   box-shadow: 1px 1px 7px 3px rgb(128 128 128 / 20%);
-  position: sticky;
-  top: 0;
-  left: 0;
 }
 
 .sidebar-item {
@@ -28,10 +25,10 @@ ul {
   color: var(--BACKGROUND-COLOR);
 }
 
-.sidebar-item:hover{
+.sidebar-item:hover {
   color: var(--SECONDARY-COLOR);
 }
 
-.active:hover{
-  color: var(--BACKGROUND-COLOR)
+.active:hover {
+  color: var(--BACKGROUND-COLOR);
 }

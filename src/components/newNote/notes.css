@@ -5,7 +5,7 @@
 
   position: relative;
   width: 70%;
-  margin: 0 4rem 4rem 4rem;
+  margin: 0 auto 4rem auto;
   box-shadow: 0 3px 5px rgb(43 43 43 / 21%);
   padding: 2rem;
 }
@@ -18,32 +18,32 @@
   background-color: transparent;
   color: var(--SECONDARY-COLOR);
   cursor: pointer;
-  z-index: 10;
+  z-index: var(--Z-INDEX-10);
 }
 
 .input-notes > textarea {
-    height: 5rem;
-    width: 90%;
-    border: transparent;
-    outline: none;
-    resize: none;
-    padding: 0;
+  height: 5rem;
+  width: 90%;
+  border: transparent;
+  outline: none;
+  resize: none;
+  padding: 0;
 }
 
-.input-cta{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+.input-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .input-cta-section > select {
-    margin-right: 1rem;
+  margin-right: 1rem;
 }
 
 .input-cta-section > button {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 .input-cta-section + button:nth-of-type(1) {
-    margin-left: auto;
+  margin-left: auto;
 }
