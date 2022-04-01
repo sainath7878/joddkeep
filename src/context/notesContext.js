@@ -24,7 +24,7 @@ function NotesProvider({ children }) {
                         },
                     });
                     if (response.status === 200) {
-                        noteDispatch({ type: "SET_INITIAL_NOTES", payload: response.data.notes })
+                        noteDispatch({ type: "SET_NOTES", payload: response.data.notes })
                     }
                 } catch (err) {
                     console.log(err);
@@ -53,7 +53,7 @@ function NotesProvider({ children }) {
                 }
             );
             if (response.status === 201) {
-                noteDispatch({ type: "ADD_NEW_NOTE", payload: response.data.notes });
+                noteDispatch({ type: "SET_NOTES", payload: response.data.notes });
             }
         } catch (err) {
             console.log(err);
@@ -78,10 +78,9 @@ function NotesProvider({ children }) {
                     }
                 }
             )
-
             if (response.status === 200) {
                 noteDispatch({
-                    type: "REMOVE_NOTE_FROM_NOTES",
+                    type: "SET_NOTES",
                     payload: response.data.notes
                 });
             }
@@ -104,7 +103,7 @@ function NotesProvider({ children }) {
             )
             if (response.status === 201) {
                 noteDispatch({
-                    type: "TOGGLE_PINNED_NOTES",
+                    type: "SET_NOTES",
                     payload: response.data.notes
                 });
             }

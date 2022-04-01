@@ -5,15 +5,21 @@ function Trash({ note }) {
   const {
     noteDispatch,
     noteState: { trash },
+    addNewNoteHandler,
   } = useNotes();
   const { title, color, description, label, priority } = note;
 
   const removeFromTrashHandler = (note) => {
     const { _id } = note;
     noteDispatch({
-      type: "REMOVE_FROM_TRASH",
+      type: "SET_TRASH",
       payload: trash.filter((trashNote) => trashNote._id !== _id),
     });
+  };
+
+  const restoreNotesFromTrash = (note) => {
+    addNewNoteHandler(note);
+    removeFromTrashHandler(note);
   };
 
   return (
@@ -29,7 +35,10 @@ function Trash({ note }) {
         </div>
         <div className="display-cta-section">
           <button>
-            <IcOutlineNoteAdd className="fs-m mr-sm" />
+            <IcOutlineNoteAdd
+              className="fs-m mr-sm"
+              onClick={() => restoreNotesFromTrash(note)}
+            />
           </button>
           <button>
             <BiTrash

@@ -5,19 +5,14 @@ const TrashContext = createContext();
 
 function TrashProvider({ children }) {
     const {
-        noteState: { notes, trash },
+        noteState: { trash },
         noteDispatch,
         removeNoteHandler
     } = useNotes();
 
     const trashHandler = (note) => {
-        const { _id } = note;
-        noteDispatch({ type: "ADD_NOTE_TO_TRASH", payload: [...trash, note] });
+        noteDispatch({ type: "SET_TRASH", payload: [...trash, note] });
         removeNoteHandler(note);
-        noteDispatch({
-            type: "REMOVE_NOTE_FROM_NOTES",
-            payload: notes.filter((stateNote) => stateNote._id !== _id),
-        });
     };
 
     return (

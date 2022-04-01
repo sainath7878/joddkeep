@@ -20,25 +20,18 @@ function NewNote() {
       className="input-notes-container"
       style={{ backgroundColor: formDetails.color }}
     >
-      {formDetails.isPinned ? (
-        <button
-          className="btn-pin"
-          onClick={() => {
-            setFormDetails({ ...formDetails, isPinned: !formDetails.isPinned });
-          }}
-        >
+      <button
+        className="btn-pin"
+        onClick={() => {
+          setFormDetails({ ...formDetails, isPinned: !formDetails.isPinned });
+        }}
+      >
+        {formDetails.isPinned ? (
           <BiPinFill className="fs-m" />
-        </button>
-      ) : (
-        <button
-          className="btn-pin"
-          onClick={() => {
-            setFormDetails({ ...formDetails, isPinned: !formDetails.isPinned });
-          }}
-        >
+        ) : (
           <BiPin className="fs-m" />
-        </button>
-      )}
+        )}
+      </button>
       <div className="input-notes">
         <textarea
           rows="1"
