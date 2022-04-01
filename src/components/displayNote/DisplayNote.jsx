@@ -1,37 +1,57 @@
-import { BiPinFill, BiPalette, BiTrash, BiPencil } from "assets/icons/Icons";
+import {
+  BiPin,
+  BiPinFill,
+  BiTrash,
+  BiPencil,
+  MdiArchiveArrowDownOutline,
+} from "assets/icons/Icons";
+import { useNotes, useTrash } from "context";
 import "./displayNote.css";
 
-function DisplayNote() {
+function DisplayNote({ note }) {
+  const { title, color, description, label, priority, isPinned } = note;
+  const { pinHandler } = useNotes();
+
+  const { trashHandler } = useTrash();
+
   return (
-    <div className="display-notes-container">
-      <div className="display-notes">
-        <button className="btn-pin" type="button">
+    <div className="display-notes" style={{ backgroundColor: color }}>
+      {isPinned ? (
+        <button
+          className="btn-pin"
+          type="button"
+          onClick={() => pinHandler(note)}
+        >
           <BiPinFill className="fs-m" />
         </button>
-        <div className="display-notes-text">
-          <h2 className="fs-m">Title 1</h2>
-          <p className="fs-s">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam
-            soluta, architecto officiis veritatis voluptatibus quis cupiditate
-            ut eum minima, aut quaerat magni error laboriosam commodi.
-          </p>
+      ) : (
+        <button
+          className="btn-pin"
+          type="button"
+          onClick={() => pinHandler(note)}
+        >
+          <BiPin className="fs-m" />
+        </button>
+      )}
+      <div className="display-notes-text">
+        <h2 className="fs-m">{title}</h2>
+        <p className="fs-s">{description}</p>
+      </div>
+      <div className="display-cta">
+        <div className="d-flex">
+          <h3 className="fs-s labels">{label}</h3>
+          <h3 className="fs-s priority">{priority}</h3>
         </div>
-        <div className="display-cta">
-          <div className="d-flex">
-            <h3 className="fs-s labels">Home</h3>
-            <h3 className="fs-s priority">Medium</h3>
-          </div>
-          <div className="display-cta-section">
-            <button>
-              <BiPalette className="fs-s mr-sm" />
-            </button>
-            <button>
-              <BiPencil className="fs-s mr-sm" />
-            </button>
-            <button>
-              <BiTrash className="fs-s" />
-            </button>
-          </div>
+        <div className="display-cta-section">
+          <button>
+            <BiPencil className="fs-m mr-sm" />
+          </button>
+          <button>
+            <MdiArchiveArrowDownOutline className="fs-m mr-sm" />
+          </button>
+          <button>
+            <BiTrash className="fs-m" onClick={() => trashHandler(note)} />
+          </button>
         </div>
       </div>
     </div>

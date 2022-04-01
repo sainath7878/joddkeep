@@ -1,22 +1,14 @@
-.display-notes-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-
-  width: 90%;
-  margin: 2rem 4rem;
-}
-
 .display-notes {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 1rem;
 
   width: 45%;
   position: relative;
-  background-color: var(--SIDE-NAVBAR-COLOR);
   box-shadow: 0 3px 5px rgb(43 43 43 / 21%);
   padding: 2rem;
+  min-height: 15rem;
 }
 
 .display-notes-text > * {
@@ -43,6 +35,11 @@
 .display-cta {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.display-cta-section {
+  display: flex;
   align-items: center;
 }
 

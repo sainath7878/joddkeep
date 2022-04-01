@@ -11,6 +11,7 @@ export { Archive } from "components/archive/Archive"
 export { Label } from "components/label/Label"
 export { Trash } from "components/trash/Trash"
 export { DisplayNote } from "components/displayNote/DisplayNote"
+export { ColorPalette } from "components/colorPalette/ColorPalette"
 
 
 
