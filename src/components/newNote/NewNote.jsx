@@ -1,43 +1,111 @@
 import "./notes.css";
-import { BiPin, BiPalette } from "assets/icons/Icons";
+import { BiPin, BiPinFill } from "assets/icons/Icons";
+import { useState } from "react";
+import { ColorPalette } from "components/index";
+import { useNotes } from "context";
 
 function NewNote() {
+  const [formDetails, setFormDetails] = useState({
+    title: "",
+    description: "",
+    label: "",
+    priority: "",
+    color: "#fff",
+    isPinned: false,
+  });
+  const { addNewNoteHandler } = useNotes();
+
   return (
-    <div className="input-notes-container">
-      <button className="btn-pin" type="button">
-        <BiPin className="fs-m" />
-      </button>
+    <div
+      className="input-notes-container"
+      style={{ backgroundColor: formDetails.color }}
+    >
+      {formDetails.isPinned ? (
+        <button
+          className="btn-pin"
+          onClick={() => {
+            setFormDetails({ ...formDetails, isPinned: !formDetails.isPinned });
+          }}
+        >
+          <BiPinFill className="fs-m" />
+        </button>
+      ) : (
+        <button
+          className="btn-pin"
+          onClick={() => {
+            setFormDetails({ ...formDetails, isPinned: !formDetails.isPinned });
+          }}
+        >
+          <BiPin className="fs-m" />
+        </button>
+      )}
       <div className="input-notes">
-        <textarea rows="1" placeholder="Title" maxLength="30"></textarea>
-        <textarea rows="3" placeholder="Take notes ...."></textarea>
+        <textarea
+          rows="1"
+          placeholder="Title"
+          maxLength="30"
+          value={formDetails.title}
+          onChange={(e) => {
+            setFormDetails({ ...formDetails, title: e.target.value });
+          }}
+        ></textarea>
+        <textarea
+          rows="3"
+          placeholder="Take notes ...."
+          value={formDetails.description}
+          onChange={(e) => {
+            setFormDetails({ ...formDetails, description: e.target.value });
+          }}
+        ></textarea>
       </div>
       <div className="input-cta">
         <div className="input-cta-section flex-1">
-          <select name="" id="" className="fs-s">
-            <option defaultValue disabled hidden>
+          <select
+            defaultValue=""
+            className="fs-s"
+            onChange={(e) => {
+              setFormDetails({ ...formDetails, label: e.target.value });
+            }}
+          >
+            <option value="" disabled hidden>
               Label
             </option>
-            <option>Home</option>
-            <option>Work</option>
-            <option>Personal</option>
+            <option value="Home">Home</option>
+            <option vlaue="Work">Work</option>
+            <option vlaue="Personal">Personal</option>
           </select>
-          <select name="" id="" className="fs-s">
-            <option selected disabled hidden>
+          <select
+            defaultValue=""
+            className="fs-s"
+            onChange={(e) => {
+              setFormDetails({ ...formDetails, priority: e.target.value });
+            }}
+          >
+            <option value="" disabled hidden>
               Priority
             </option>
-            <option>High</option>
-            <option>Medium</option>
-            <option>Low</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
           </select>
           <button>
-            <BiPalette className="fs-s" />
+            <ColorPalette
+              className="fs-m mr-sm"
+              formDetails={formDetails}
+              setFormDetails={setFormDetails}
+            />
           </button>
         </div>
-        <button className="btn btn-secondary fs-s" type="button">
+        <button
+          className="btn btn-secondary fs-s"
+          type="button"
+          onClick={() => addNewNoteHandler(formDetails, setFormDetails)}
+        >
           Add
         </button>
       </div>
     </div>
   );
 }
+
 export { NewNote };

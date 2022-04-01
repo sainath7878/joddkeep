@@ -47,6 +47,7 @@ function SignIn() {
           type={`${showPassword ? "password" : "text"}`}
           id="password"
           placeholder="Enter Password"
+          autoComplete="off"
           className={`form-input ${error.state ? "error-border" : ""}`}
           onChange={(e) =>
             setLoginDetails({ ...loginDetails, password: e.target.value })

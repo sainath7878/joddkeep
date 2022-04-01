@@ -75,6 +75,7 @@ function SignUp() {
             type={`${showPassword.password ? "password" : "text"}`}
             id="password"
             placeholder="Enter Password"
+            autoComplete="off"
             className={`form-input ${error.state ? "error-border" : ""}`}
             onChange={(e) =>
               setSignUpDetails({ ...signUpDetails, password: e.target.value })
@@ -101,6 +102,7 @@ function SignUp() {
             type={`${showPassword.confirmPassword ? "password" : "text"}`}
             id="confirmPassword"
             placeholder="Enter Password"
+            autoComplete="off"
             className={`form-input ${error.state ? "error-border" : ""}`}
             onChange={(e) =>
               setSignUpDetails({
