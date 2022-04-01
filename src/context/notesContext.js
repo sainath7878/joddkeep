@@ -91,17 +91,29 @@ function NotesProvider({ children }) {
         }
     }
 
-    const pinHandler = (note) => {
-        const { _id } = note;
-        noteDispatch({
-            type: "TOGGLE_PINNED_NOTES",
-            payload: noteState.notes.map((stateNote) => {
-                if (stateNote._id === _id) {
-                    return { ...stateNote, isPinned: !stateNote.isPinned };
+    const pinHandler = async (note) => {
+        const { _id, isPinned } = note;
+        try {
+            const response = await axios.post(`/api/notes/${_id}`,
+                { note: { ...note, isPinned: !isPinned } },
+                {
+                    headers: {
+                        authorization: encodedToken
+                    }
                 }
-                return stateNote;
-            }),
-        });
+            )
+            if (response.status === 201) {
+                noteDispatch({
+                    type: "TOGGLE_PINNED_NOTES",
+                    payload: response.data.notes
+                });
+            }
+        }
+        catch (err) {
+            console.log(err)
+        }
+
+
     };
 
 
