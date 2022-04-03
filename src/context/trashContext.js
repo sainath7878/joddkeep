@@ -7,7 +7,8 @@ function TrashProvider({ children }) {
     const {
         noteState: { trash },
         noteDispatch,
-        removeNoteHandler
+        removeNoteHandler,
+        addNewNoteHandler
     } = useNotes();
 
     const trashHandler = (note) => {
@@ -15,8 +16,21 @@ function TrashProvider({ children }) {
         removeNoteHandler(note);
     };
 
+    const removeFromTrashHandler = (note) => {
+        const { _id } = note;
+        noteDispatch({
+            type: "SET_TRASH",
+            payload: trash.filter((trashNote) => trashNote._id !== _id),
+        });
+    };
+
+    const restoreNotesFromTrash = (note) => {
+        addNewNoteHandler(note);
+        removeFromTrashHandler(note);
+    };
+
     return (
-        <TrashContext.Provider value={{ trashHandler }}>
+        <TrashContext.Provider value={{ trashHandler, restoreNotesFromTrash, removeFromTrashHandler }}>
             {children}
         </TrashContext.Provider>
     )

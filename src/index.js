@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { makeServer } from './server'
 import { BrowserRouter } from "react-router-dom";
-import { AuthProvider, NotesProvider, TrashProvider } from "context/index"
+import { AuthProvider, NotesProvider, TrashProvider, ArchiveProvider } from "context/index"
 
 makeServer();
 
@@ -15,7 +15,9 @@ ReactDOM.render(
       <AuthProvider>
         <NotesProvider>
           <TrashProvider>
-            <App />
+            <ArchiveProvider>
+              <App />
+            </ArchiveProvider>
           </TrashProvider>
         </NotesProvider>
       </AuthProvider>
