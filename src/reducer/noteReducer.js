@@ -12,6 +12,8 @@ const noteReducer = (state, { type, payload }) => {
             return { ...state, trash: payload }
         case "SET_ARCHIVE":
             return { ...state, archivedNotes: payload }
+        case "MOVE_TO_ARCHIVE":
+            return { ...state, archivedNotes: payload.archives, notes: payload.notes }
         default:
             return state
     }

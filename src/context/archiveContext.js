@@ -17,7 +17,7 @@ function ArchiveProvider({ children }) {
             const response = await axios.post(
                 `/api/notes/archives/${_id}`,
                 {
-                    note: note,
+                    note
                 },
                 {
                     headers: {
@@ -26,8 +26,7 @@ function ArchiveProvider({ children }) {
                 }
             );
             if (response.status === 201) {
-                noteDispatch({ type: "SET_ARCHIVE", payload: response.data.archives })
-                noteDispatch({ type: "SET_NOTES", payload: response.data.notes })
+                noteDispatch({ type: "MOVE_TO_ARCHIVE", payload: { notes: response.data.notes, archives: response.data.archives } })
             }
         } catch (err) {
             console.log(err);
@@ -47,8 +46,7 @@ function ArchiveProvider({ children }) {
                 }
             );
             if (response.status === 200) {
-                noteDispatch({ type: "SET_ARCHIVE", payload: response.data.archives })
-                noteDispatch({ type: "SET_NOTES", payload: response.data.notes })
+                noteDispatch({ type: "MOVE_TO_ARCHIVE", payload: { notes: response.data.notes, archives: response.data.archives } })
             }
         } catch (err) {
             console.log(err);

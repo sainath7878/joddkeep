@@ -14,7 +14,7 @@ function ArchivePage() {
   useEffect(() => {
     (async () => {
       try {
-        const response = axios.get("/api/archives", {
+        const response = await axios.get("/api/archives", {
           headers: {
             authorization: encodedToken,
           },
