@@ -1,11 +1,36 @@
+import axios from "axios";
 import { Archive } from "components/index";
 import { useNotes } from "context";
+import { useEffect } from "react";
 import "./archivePage.css";
 
 function ArchivePage() {
+  const encodedToken = localStorage.getItem("token");
   const {
     noteState: { archivedNotes },
+    noteDispatch,
   } = useNotes();
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = axios.get("/api/archives", {
+          headers: {
+            authorization: encodedToken,
+          },
+        });
+        if (response.status === 200) {
+          noteDispatch({
+            type: "SET_ARCHIVE",
+            payload: (await response).data.archives,
+          });
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+  }, [encodedToken, noteDispatch]);
+
   return (
     <section className="archive">
       {archivedNotes.length === 0 ? (
