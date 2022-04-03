@@ -1,26 +1,10 @@
 import { IcOutlineNoteAdd, BiTrash } from "assets/icons/Icons";
-import { useNotes } from "context";
+import { useTrash } from "context";
 
 function Trash({ note }) {
-  const {
-    noteDispatch,
-    noteState: { trash },
-    addNewNoteHandler,
-  } = useNotes();
+  const { restoreNotesFromTrash, removeFromTrashHandler } = useTrash();
+
   const { title, color, description, label, priority } = note;
-
-  const removeFromTrashHandler = (note) => {
-    const { _id } = note;
-    noteDispatch({
-      type: "SET_TRASH",
-      payload: trash.filter((trashNote) => trashNote._id !== _id),
-    });
-  };
-
-  const restoreNotesFromTrash = (note) => {
-    addNewNoteHandler(note);
-    removeFromTrashHandler(note);
-  };
 
   return (
     <div className="display-notes" style={{ backgroundColor: color }}>

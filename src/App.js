@@ -2,7 +2,7 @@ import './App.css';
 import Mockman from "mockman-js";
 import { Routes, Route } from "react-router-dom";
 import { LandingPage, AuthorizationPage, NotesPage, ArchivePage, LabelPage, TrashPage, RestrictAuth } from 'pages/index'
-import { Header, Footer, Authorized, Sidebar, MainContainer, } from "components/index"
+import { Header, Footer, Authorized, Sidebar, MainContainer, Toast } from "components/index"
 import { useAuth } from 'context';
 import { useLocation } from "react-router-dom";
 
@@ -12,6 +12,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+      {/* <Toast /> */}
       <MainContainer>
         {location.pathname !== "/" && authState.isLoggedIn && <Sidebar />}
         <Routes>

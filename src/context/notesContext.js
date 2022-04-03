@@ -25,6 +25,7 @@ function NotesProvider({ children }) {
                     });
                     if (response.status === 200) {
                         noteDispatch({ type: "SET_NOTES", payload: response.data.notes })
+
                     }
                 } catch (err) {
                     console.log(err);

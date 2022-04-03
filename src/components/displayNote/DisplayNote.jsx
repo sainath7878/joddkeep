@@ -5,7 +5,7 @@ import {
   BiPencil,
   MdiArchiveArrowDownOutline,
 } from "assets/icons/Icons";
-import { useNotes, useTrash } from "context";
+import { useArchive, useNotes, useTrash } from "context";
 import "./displayNote.css";
 
 function DisplayNote({ note }) {
@@ -13,6 +13,7 @@ function DisplayNote({ note }) {
   const { pinHandler } = useNotes();
 
   const { trashHandler } = useTrash();
+  const { archiveHandler } = useArchive();
 
   return (
     <div className="display-notes" style={{ backgroundColor: color }}>
@@ -47,7 +48,10 @@ function DisplayNote({ note }) {
             <BiPencil className="fs-m mr-sm" />
           </button>
           <button>
-            <MdiArchiveArrowDownOutline className="fs-m mr-sm" />
+            <MdiArchiveArrowDownOutline
+              className="fs-m mr-sm"
+              onClick={() => archiveHandler(note)}
+            />
           </button>
           <button>
             <BiTrash className="fs-m" onClick={() => trashHandler(note)} />
