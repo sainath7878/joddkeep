@@ -41,6 +41,11 @@
   align-items: center;
 }
 
+.input-cta-section {
+  display: flex;
+  align-items: center;
+}
+
 .input-cta-section > select {
   margin-right: 1rem;
   background-color: transparent;

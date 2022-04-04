@@ -52,7 +52,7 @@ function NewNote() {
         ></textarea>
       </div>
       <div className="input-cta">
-        <div className="input-cta-section flex-1">
+        <div className="input-cta-section d-flex">
           <select
             defaultValue=""
             className="fs-s"
@@ -83,7 +83,7 @@ function NewNote() {
           </select>
           <button>
             <ColorPalette
-              className="fs-m mr-sm"
+              className="mr-sm"
               formDetails={formDetails}
               setFormDetails={setFormDetails}
             />

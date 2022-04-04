@@ -1,10 +1,11 @@
-import { NewNote, DisplayNote } from "components/index";
+import { NewNote, DisplayNote, EditNote } from "components/index";
 import { useNotes } from "context";
 import "./notesPage.css";
 
 function NotesPage() {
   const {
     noteState: { notes },
+    showEditModal,
   } = useNotes();
   return (
     <section className="notes">
@@ -35,6 +36,7 @@ function NotesPage() {
           </div>
         </>
       )}
+      {showEditModal.state && <EditNote />}
     </section>
   );
 }
