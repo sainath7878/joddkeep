@@ -18,23 +18,18 @@ function DisplayNote({ note }) {
   return (
     <>
       <div className="display-notes" style={{ backgroundColor: color }}>
-        {isPinned ? (
-          <button
-            className="btn-pin"
-            type="button"
-            onClick={() => pinHandler(note)}
-          >
+        <button
+          className="btn-pin"
+          type="button"
+          onClick={() => pinHandler(note)}
+        >
+          {isPinned ? (
             <BiPinFill className="fs-m" />
-          </button>
-        ) : (
-          <button
-            className="btn-pin"
-            type="button"
-            onClick={() => pinHandler(note)}
-          >
+          ) : (
             <BiPin className="fs-m" />
-          </button>
-        )}
+          )}
+        </button>
+
         <div className="display-notes-text">
           <h2 className="fs-m">{title}</h2>
           <p className="fs-s">{description}</p>
