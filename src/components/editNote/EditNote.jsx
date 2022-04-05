@@ -5,7 +5,7 @@ import "./editNote.css";
 import { useNotes } from "context";
 
 function EditNote() {
-  const { showEditModal, updateNoteHandler } = useNotes();
+  const { showEditModal, updateNoteHandler, setShowEditModal } = useNotes();
   const [editDetails, setEditDetails] = useState(showEditModal.note);
 
   return (
@@ -94,11 +94,18 @@ function EditNote() {
               </button>
             </div>
             <button
-              className="btn btn-secondary fs-s"
+              className="btn btn-secondary fs-s mr-sm"
               type="button"
               onClick={() => updateNoteHandler(editDetails)}
             >
               Save
+            </button>
+            <button
+              className="btn btn-primary fs-s "
+              type="button"
+              onClick={() => setShowEditModal({ state: false, note: {} })}
+            >
+              Close
             </button>
           </div>
         </div>
