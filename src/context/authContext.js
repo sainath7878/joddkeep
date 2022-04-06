@@ -29,7 +29,9 @@ function AuthProvider({ children }) {
                         email: response.data.foundUser.email,
                         firstName: response.data.foundUser.firstName,
                     },
-                });
+                }
+                );
+                authDispatch({ type: "SET_TOAST", payload: { type: "snackbar-success", msg: "Login Successful", toastState: true } });
                 navigate("/notes", { replace: true });
             }
         } catch (err) {
@@ -56,6 +58,7 @@ function AuthProvider({ children }) {
                         firstName: response.data.createdUser.firstName,
                     },
                 });
+                authDispatch({ type: "SET_TOAST", payload: { type: "snackbar-success", msg: "Sign Up Successful", toastState: true } });
                 navigate("/notes", { replace: true });
             }
         } catch (err) {

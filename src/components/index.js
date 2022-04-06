@@ -13,6 +13,8 @@ export { Trash } from "components/trash/Trash"
 export { DisplayNote } from "components/displayNote/DisplayNote"
 export { ColorPalette } from "components/colorPalette/ColorPalette"
 export { Toast } from "components/toast/Toast"
+export { EditNote } from "components/editNote/EditNote"
+
 
 
 

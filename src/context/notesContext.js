@@ -1,4 +1,4 @@
-import { useContext, createContext, useEffect, useReducer } from "react";
+import { useContext, createContext, useEffect, useReducer, useState } from "react";
 import { useAuth } from "context/index";
 import axios from "axios"
 import { initialNoteState, noteReducer } from "reducer/noteReducer";
@@ -8,11 +8,16 @@ const NotesContext = createContext();
 
 function NotesProvider({ children }) {
     const {
-        authState: { isLoggedIn },
+        authState: { isLoggedIn }, authDispatch
     } = useAuth();
 
     const encodedToken = localStorage.getItem("token");
+    const [showEditModal, setShowEditModal] = useState({
+        state: false,
+        note: {},
+    });
     const [noteState, noteDispatch] = useReducer(noteReducer, initialNoteState)
+
 
     useEffect(() => {
         if (isLoggedIn) {
@@ -55,6 +60,7 @@ function NotesProvider({ children }) {
             );
             if (response.status === 201) {
                 noteDispatch({ type: "SET_NOTES", payload: response.data.notes });
+                authDispatch({ type: "SET_TOAST", payload: { type: "snackbar-success", msg: "Notes Added", toastState: true } });
             }
         } catch (err) {
             console.log(err);
@@ -84,6 +90,7 @@ function NotesProvider({ children }) {
                     type: "SET_NOTES",
                     payload: response.data.notes
                 });
+                authDispatch({ type: "SET_TOAST", payload: { type: "snackbar-danger", msg: "Moved to Trash", toastState: true } });
             }
         }
         catch (err) {
@@ -107,18 +114,49 @@ function NotesProvider({ children }) {
                     type: "SET_NOTES",
                     payload: response.data.notes
                 });
+                authDispatch({ type: "SET_TOAST", payload: { type: "snackbar-info", msg: "Note Edited", toastState: true } });
             }
         }
         catch (err) {
             console.log(err)
         }
+    };
 
-
+    const updateNoteHandler = async (editDetails) => {
+        const { _id } = editDetails;
+        try {
+            const response = await axios.post(
+                `/api/notes/${_id}`,
+                { note: editDetails },
+                {
+                    headers: {
+                        authorization: encodedToken,
+                    },
+                }
+            );
+            if (response.status === 201) {
+                noteDispatch({
+                    type: "SET_NOTES",
+                    payload: response.data.notes,
+                });
+                authDispatch({
+                    type: "SET_TOAST",
+                    payload: {
+                        type: "snackbar-info",
+                        msg: "Note Edited",
+                        toastState: true,
+                    },
+                });
+                setShowEditModal({ state: false, note: {} });
+            }
+        } catch (err) {
+            console.log(err);
+        }
     };
 
 
     return (
-        <NotesContext.Provider value={{ noteState, noteDispatch, addNewNoteHandler, removeNoteHandler, pinHandler }}>
+        <NotesContext.Provider value={{ noteState, noteDispatch, addNewNoteHandler, removeNoteHandler, pinHandler, showEditModal, setShowEditModal, updateNoteHandler }}>
             {children}
         </NotesContext.Provider>
     )

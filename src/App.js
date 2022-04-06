@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      {/* <Toast /> */}
+      {authState.toast.toastState && <Toast />}
       <MainContainer>
         {location.pathname !== "/" && authState.isLoggedIn && <Sidebar />}
         <Routes>

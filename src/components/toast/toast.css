@@ -1,3 +1,15 @@
-.snackbar{
-    position: fixed;
+.snackbar {
+  position: fixed;
+  top: 7rem;
+  right: 0;
+  height: 5rem;
+  z-index: var(--Z-INDEX-20);
+}
+
+.show {
+  transform: translateX(0);
+}
+
+.hide {
+  transform: translateX(150%);
 }

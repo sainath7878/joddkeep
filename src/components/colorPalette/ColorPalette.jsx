@@ -24,7 +24,7 @@ function ColorPalette({ formDetails, setFormDetails }) {
       onMouseOver={() => setDisplayPalette(!displayPalette)}
       onMouseOut={() => setDisplayPalette(!displayPalette)}
     >
-      <BiPalette />
+      <BiPalette className="fs-s"/>
       <div className={`${displayPalette ? "palette-container" : "d-none"}`}>
         {colors.map((item, index) => {
           return (
