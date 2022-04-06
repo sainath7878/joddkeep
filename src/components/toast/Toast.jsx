@@ -22,7 +22,7 @@ function Toast() {
       });
     }, 3000);
     return () => clearTimeout(timeOut);
-  }, []);
+  }, [authDispatch]);
 
   return (
     <div className={`snackbar ${type} ${toastState ? "show" : "hide"}`}>
