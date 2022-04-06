@@ -3,8 +3,11 @@ import { BiDoorOpenFill, BiEyeFill, BiEyeSlashFill } from "assets/icons/Icons";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useAuth } from "context";
+import { useDocument } from "customHooks/useDocument";
 
 function SignUp() {
+  useDocument("SignUp");
+
   const { signUpHandler, error, setError } = useAuth();
   const [signUpDetails, setSignUpDetails] = useState({
     fullName: "",
