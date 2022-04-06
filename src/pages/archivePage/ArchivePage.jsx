@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Archive } from "components/index";
 import { useNotes } from "context";
+import { useDocument } from "customHooks/useDocument";
 import { useEffect } from "react";
 import "./archivePage.css";
 
@@ -10,6 +11,8 @@ function ArchivePage() {
     noteState: { archivedNotes },
     noteDispatch,
   } = useNotes();
+
+  useDocument("Archive");
 
   useEffect(() => {
     (async () => {

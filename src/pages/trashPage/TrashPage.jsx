@@ -1,8 +1,11 @@
 import { Trash } from "components/index";
 import { useNotes } from "context";
+import { useDocument } from "customHooks/useDocument";
 import "./trashPage.css";
 
 function TrashPage() {
+  useDocument("Trash");
+
   const {
     noteState: { trash },
   } = useNotes();
