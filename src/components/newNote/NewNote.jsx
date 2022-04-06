@@ -5,6 +5,7 @@ import { ColorPalette } from "components/index";
 import { useNotes } from "context";
 
 function NewNote() {
+  // const d = new Date();
   const [formDetails, setFormDetails] = useState({
     title: "",
     description: "",
