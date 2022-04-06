@@ -2,7 +2,7 @@ import { BiTrash, IcOutlineUnarchive } from "assets/icons/Icons";
 import { useArchive } from "context";
 
 function Archive({ note }) {
-  const { title, color, description, label, priority } = note;
+  const { title, color, description, label, priority, createdTime } = note;
 
   const { unarchiveHandler, deleteFromArchiveHandler } = useArchive();
 
@@ -12,6 +12,7 @@ function Archive({ note }) {
         <h2 className="fs-m">{title}</h2>
         <p className="fs-s">{description}</p>
       </div>
+      <p className="display-date">CREATED ON: {createdTime}</p>
       <div className="display-cta">
         <div className="d-flex">
           <h3 className="fs-s labels">{label}</h3>

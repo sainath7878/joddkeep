@@ -24,6 +24,7 @@
   border: 1px solid var(--PRIMARY-COLOR);
   padding: 1rem;
   border-radius: 5px;
+  background-color: var(--BACKGROUND-COLOR);
 
   position: absolute;
   bottom: -11.5rem;

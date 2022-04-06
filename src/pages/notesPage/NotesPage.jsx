@@ -1,8 +1,11 @@
 import { NewNote, DisplayNote, EditNote } from "components/index";
 import { useNotes } from "context";
+import { useDocument } from "customHooks/useDocument";
 import "./notesPage.css";
 
 function NotesPage() {
+  useDocument("Home");
+
   const {
     noteState: { notes },
     showEditModal,
