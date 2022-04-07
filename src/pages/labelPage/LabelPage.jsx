@@ -128,7 +128,7 @@ function LabelPage() {
                   })
                 }
               />
-              Price High to Low
+              High to Low
             </label>
             <label className="fs-s form-label">
               <input
@@ -144,7 +144,7 @@ function LabelPage() {
                   })
                 }
               />
-              Price Low to High
+              Low to High
             </label>
           </div>
         </div>
