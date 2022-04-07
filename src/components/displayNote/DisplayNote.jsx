@@ -9,7 +9,8 @@ import { useArchive, useNotes, useTrash } from "context";
 import "./displayNote.css";
 
 function DisplayNote({ note }) {
-  const { title, color, description, label, priority, isPinned } = note;
+  const { title, color, description, label, priority, isPinned, createdTime } =
+    note;
   const { pinHandler, setShowEditModal } = useNotes();
 
   const { trashHandler } = useTrash();
@@ -34,6 +35,7 @@ function DisplayNote({ note }) {
           <h2 className="fs-m">{title}</h2>
           <p className="fs-s">{description}</p>
         </div>
+        <p className="display-date">CREATED ON: {createdTime}</p>
         <div className="display-cta">
           <div className="d-flex">
             <h3 className="fs-s labels">{label}</h3>

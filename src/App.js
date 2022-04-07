@@ -1,7 +1,7 @@
 import './App.css';
 import Mockman from "mockman-js";
 import { Routes, Route } from "react-router-dom";
-import { LandingPage, AuthorizationPage, NotesPage, ArchivePage, LabelPage, TrashPage, RestrictAuth } from 'pages/index'
+import { LandingPage, AuthorizationPage, NotesPage, ArchivePage, LabelPage, TrashPage, RestrictAuth, NotFound } from 'pages/index'
 import { Header, Footer, Authorized, Sidebar, MainContainer, Toast } from "components/index"
 import { useAuth } from 'context';
 import { useLocation } from "react-router-dom";
@@ -31,6 +31,8 @@ function App() {
           </Route>
 
           <Route path="/mockman" element={<Mockman />} />
+          <Route path="*" element={<NotFound />} />
+
         </Routes>
       </MainContainer>
       <Footer />

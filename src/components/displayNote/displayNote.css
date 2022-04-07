@@ -16,6 +16,12 @@
   word-wrap: break-word;
 }
 
+.display-date {
+  /* color: #a8a29e; */
+  color: var(--PRIMARY-COLOR);
+  font-size: 1rem;
+}
+
 .labels {
   background-color: var(--SECONDARY-COLOR);
   color: var(--BACKGROUND-COLOR);
