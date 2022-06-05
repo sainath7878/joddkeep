@@ -9,5 +9,25 @@
   gap: 2rem;
 
   width: 90%;
-  margin: 2rem 4rem;
+  margin: 2rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .notes {
+    width: 100%;
+    margin: 2rem auto;
+    padding: 0 2rem;
+  }
+
+  .display-notes-container {
+    width: 100%;
+    margin: 2rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .display-notes-container {
+    width: 100%;
+    margin: 2rem 0;
+  }
 }

@@ -8,7 +8,7 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about-joddkart">About The Project</a>
+      <a href="#about-joddkeep">About The Project</a>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -32,9 +32,9 @@
 
 ---
 
-## About JoddKart
+## About JoddKeep
 
-JODDKart is a note keeping app to keep track of your things to be done. JODDKeep is publicly hosted on vercel at [https://joddkeep-sainath7878.vercel.app/](hhttps://joddkeep-sainath7878.vercel.app/)
+JODDKeep is a note keeping app to keep track of your things to be done. JODDKeep is publicly hosted on vercel at [https://joddkeep-sainath7878.vercel.app/](hhttps://joddkeep-sainath7878.vercel.app/)
 
 The website is built using following tech-stack:
 
@@ -54,7 +54,7 @@ The website is built using following tech-stack:
 
 ### Installation
 
-Clone the repository on your local machine by typing the below commands on your terminal and cd to `joddkart`.
+Clone the repository on your local machine by typing the below commands on your terminal and cd to `joddkeep`.
 
 ```
 git clone https://github.com/sainath7878/joddkeep.git

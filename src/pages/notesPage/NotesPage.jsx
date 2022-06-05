@@ -10,6 +10,7 @@ function NotesPage() {
     noteState: { notes },
     showEditModal,
   } = useNotes();
+  
   return (
     <section className="notes">
       <NewNote />

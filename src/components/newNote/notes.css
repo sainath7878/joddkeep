@@ -60,3 +60,15 @@
 .input-cta-section + button:nth-of-type(1) {
   margin-left: auto;
 }
+
+@media only screen and (max-width: 1000px) {
+  .input-notes-container {
+    width: 85%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .input-notes-container {
+    width: 100%;
+  }
+}

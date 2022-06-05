@@ -6,7 +6,7 @@ import {
   BiPersonCircle,
   IcBaselineLogout,
 } from "assets/icons/Icons.jsx";
-import { useAuth } from "context";
+import { useAuth, useSidebar } from "context";
 import { useNavigate } from "react-router-dom";
 
 function Header() {
@@ -17,13 +17,17 @@ function Header() {
     authDispatch({ type: "LOGOUT" });
     navigate("/");
   };
+  const { setShowSidebar } = useSidebar();
   return (
     <div>
       <header>
         <nav className="navigation d-flex">
           <div className="nav-section d-flex align-center">
             <button className="btn btn-secondary d-none mobile-view hamburger">
-              <BiList className="fs-m" />
+              <BiList
+                className="fs-m"
+                onClick={() => setShowSidebar((prev) => !prev)}
+              />
             </button>
             <Link to="/">
               <p className="nav-brand-link mr-sm">

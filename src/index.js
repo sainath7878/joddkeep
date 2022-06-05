@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { makeServer } from './server'
 import { BrowserRouter } from "react-router-dom";
-import { AuthProvider, NotesProvider, TrashProvider, ArchiveProvider } from "context/index"
+import { AuthProvider, NotesProvider, TrashProvider, ArchiveProvider, SidebarProvider } from "context/index"
 
 makeServer();
 
@@ -13,13 +13,15 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <NotesProvider>
-          <TrashProvider>
-            <ArchiveProvider>
-              <App />
-            </ArchiveProvider>
-          </TrashProvider>
-        </NotesProvider>
+        <SidebarProvider>
+          <NotesProvider>
+            <TrashProvider>
+              <ArchiveProvider>
+                <App />
+              </ArchiveProvider>
+            </TrashProvider>
+          </NotesProvider>
+        </SidebarProvider>
       </AuthProvider>
     </BrowserRouter >
   </React.StrictMode>,

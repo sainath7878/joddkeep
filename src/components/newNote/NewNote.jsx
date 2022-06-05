@@ -1,11 +1,12 @@
 import "./notes.css";
 import { BiPin, BiPinFill } from "assets/icons/Icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ColorPalette } from "components/index";
 import { useNotes } from "context";
+import ReactQuill from "react-quill";
+import "../../../node_modules/react-quill/dist/quill.snow.css";
 
 function NewNote() {
-  // const d = new Date();
   const [formDetails, setFormDetails] = useState({
     title: "",
     description: "",
@@ -15,6 +16,33 @@ function NewNote() {
     isPinned: false,
   });
   const { addNewNoteHandler } = useNotes();
+  const [description, setDescription] = useState("");
+
+  useEffect(() => {
+    setFormDetails((prev) => ({ ...prev, description }));
+  }, [description]);
+
+  const modules = {
+    toolbar: [
+      [{ header: "1" }, { header: "2" }],
+      ["bold", "italic", "underline", "strike", "blockquote"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["link"],
+      ["clean"],
+    ],
+  };
+
+  const formats = [
+    "header",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "link",
+  ];
 
   return (
     <div
@@ -43,14 +71,14 @@ function NewNote() {
             setFormDetails({ ...formDetails, title: e.target.value });
           }}
         ></textarea>
-        <textarea
-          rows="3"
-          placeholder="Take notes ...."
-          value={formDetails.description}
-          onChange={(e) => {
-            setFormDetails({ ...formDetails, description: e.target.value });
-          }}
-        ></textarea>
+        <ReactQuill
+          theme="snow"
+          value={description}
+          onChange={setDescription}
+          placeholder={"Take notes ..."}
+          modules={modules}
+          formats={formats}
+        />
       </div>
       <div className="input-cta">
         <div className="input-cta-section d-flex">
@@ -93,7 +121,10 @@ function NewNote() {
         <button
           className="btn btn-secondary fs-s"
           type="button"
-          onClick={() => addNewNoteHandler(formDetails, setFormDetails)}
+          onClick={() => {
+            addNewNoteHandler(formDetails, setFormDetails);
+            setDescription(() => "");
+          }}
         >
           Add
         </button>
