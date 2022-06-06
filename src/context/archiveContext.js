@@ -1,7 +1,8 @@
 import { createContext, useContext } from "react"
 import axios from "axios";
-import { useNotes, useAuth } from "./index";
+import { useNotes } from "./index";
 import { useTrash } from "./trashContext";
+import { toast } from "react-toastify";
 
 const ArchiveContext = createContext();
 
@@ -9,8 +10,7 @@ function ArchiveProvider({ children }) {
 
     const encodedToken = localStorage.getItem("token");
     const { noteDispatch } = useNotes();
-    const { authDispatch } = useAuth()
-    const { trashHandler } = useTrash()
+    const { trashHandler } = useTrash();
 
     const archiveHandler = async (note) => {
         const { _id } = note;
@@ -28,10 +28,10 @@ function ArchiveProvider({ children }) {
             );
             if (response.status === 201) {
                 noteDispatch({ type: "MOVE_TO_ARCHIVE", payload: { notes: response.data.notes, archives: response.data.archives } })
-                authDispatch({ type: "SET_TOAST", payload: { type: "snackbar-success", msg: "Archived Notes", toastState: true } });
+                toast.success("Archived Notes")
             }
         } catch (err) {
-            console.log(err);
+            toast.error(err.response.data.errors[0])
         }
     };
 
@@ -49,10 +49,10 @@ function ArchiveProvider({ children }) {
             );
             if (response.status === 200) {
                 noteDispatch({ type: "MOVE_TO_ARCHIVE", payload: { notes: response.data.notes, archives: response.data.archives } })
-                authDispatch({ type: "SET_TOAST", payload: { type: "snackbar-success", msg: "Moved to Notes", toastState: true } });
+                toast.success("Moved to Notes");
             }
         } catch (err) {
-            console.log(err);
+            toast.error(err.response.data.errors[0])
         }
     }
 
@@ -70,10 +70,10 @@ function ArchiveProvider({ children }) {
             if (response.status === 200) {
                 noteDispatch({ type: "SET_ARCHIVE", payload: response.data.archives })
                 trashHandler(note);
-                authDispatch({ type: "SET_TOAST", payload: { type: "snackbar-danger", msg: "Moved to Trash", toastState: true } });
+                toast.info("Moved to Trash");
             }
         } catch (err) {
-            console.log(err);
+            toast.error(err.response.data.errors[0])
         }
     }
 

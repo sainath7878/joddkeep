@@ -2,6 +2,7 @@ import { createContext, useContext, useReducer, useState } from "react";
 import { initialState, authReducer } from "reducer/authReducer";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 const AuthContext = createContext();
@@ -31,12 +32,13 @@ function AuthProvider({ children }) {
                     },
                 }
                 );
-                authDispatch({ type: "SET_TOAST", payload: { type: "snackbar-success", msg: "Login Successful", toastState: true } });
+                toast.success("Login Successful");
                 navigate("/notes", { replace: true });
             }
         } catch (err) {
             console.log("Error while signin In ", err);
             setError({ msg: "Please Enter valid Credentials", state: true });
+            toast.error(err.response.data.errors[0]);
         }
     };
 
@@ -58,12 +60,13 @@ function AuthProvider({ children }) {
                         firstName: response.data.createdUser.firstName,
                     },
                 });
-                authDispatch({ type: "SET_TOAST", payload: { type: "snackbar-success", msg: "Sign Up Successful", toastState: true } });
+                toast.success("Sign Up Successful");
                 navigate("/notes", { replace: true });
             }
         } catch (err) {
             setError({ msg: "Try again after some time", status: true });
             console.log("Could not signUp", err);
+            toast.error(err.response.data.errors[0]);
         }
     };
 

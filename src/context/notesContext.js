@@ -2,13 +2,14 @@ import { useContext, createContext, useEffect, useReducer, useState } from "reac
 import { useAuth } from "context/index";
 import axios from "axios"
 import { initialNoteState, noteReducer } from "reducer/noteReducer";
+import { toast } from "react-toastify";
 
 
 const NotesContext = createContext();
 
 function NotesProvider({ children }) {
     const {
-        authState: { isLoggedIn }, authDispatch
+        authState: { isLoggedIn },
     } = useAuth();
 
     const encodedToken = localStorage.getItem("token");
@@ -30,10 +31,9 @@ function NotesProvider({ children }) {
                     });
                     if (response.status === 200) {
                         noteDispatch({ type: "SET_NOTES", payload: response.data.notes })
-
                     }
                 } catch (err) {
-                    console.log(err);
+                    toast.error(err.response.data.errors[0])
                 }
             })();
         }
@@ -46,33 +46,39 @@ function NotesProvider({ children }) {
         if (formDetails.priority === "") {
             formDetails = { ...formDetails, priority: "Low" };
         }
-        try {
-            const response = await axios.post(
-                "/api/notes",
-                {
-                    note: formDetails,
-                },
-                {
-                    headers: {
-                        authorization: encodedToken,
+        if (formDetails.title !== "" && formDetails.title.trim().length > 0) {
+            try {
+                const response = await axios.post(
+                    "/api/notes",
+                    {
+                        note: formDetails,
                     },
+                    {
+                        headers: {
+                            authorization: encodedToken,
+                        },
+                    }
+                );
+                if (response.status === 201) {
+                    noteDispatch({ type: "SET_NOTES", payload: response.data.notes });
+                    toast.success("Note Added");
                 }
-            );
-            if (response.status === 201) {
-                noteDispatch({ type: "SET_NOTES", payload: response.data.notes });
-                authDispatch({ type: "SET_TOAST", payload: { type: "snackbar-success", msg: "Notes Added", toastState: true } });
+            } catch (err) {
+                toast.error(err.response.data.errors[0])
             }
-        } catch (err) {
-            console.log(err);
+            setFormDetails({
+                title: "",
+                description: "",
+                label: "",
+                priority: "",
+                color: "#fff",
+                isPinned: false,
+            });
         }
-        setFormDetails({
-            title: "",
-            description: "",
-            label: "",
-            priority: "",
-            color: "#fff",
-            isPinned: false,
-        });
+        else {
+            toast.error("Title cannot be empty");
+        }
+
     };
 
     const removeNoteHandler = async (note) => {
@@ -90,11 +96,11 @@ function NotesProvider({ children }) {
                     type: "SET_NOTES",
                     payload: response.data.notes
                 });
-                authDispatch({ type: "SET_TOAST", payload: { type: "snackbar-danger", msg: "Moved to Trash", toastState: true } });
+                toast.info("Moved to Trash");
             }
         }
         catch (err) {
-            console.log(err)
+            toast.error(err.response.data.errors[0])
         }
     }
 
@@ -114,43 +120,40 @@ function NotesProvider({ children }) {
                     type: "SET_NOTES",
                     payload: response.data.notes
                 });
-                authDispatch({ type: "SET_TOAST", payload: { type: "snackbar-info", msg: "Note Edited", toastState: true } });
+                toast.success("Note Edited");
             }
         }
         catch (err) {
-            console.log(err)
+            toast.error(err.response.data.errors[0])
         }
     };
 
     const updateNoteHandler = async (editDetails) => {
         const { _id } = editDetails;
-        try {
-            const response = await axios.post(
-                `/api/notes/${_id}`,
-                { note: editDetails },
-                {
-                    headers: {
-                        authorization: encodedToken,
-                    },
+        if (editDetails.title !== "" && editDetails.title.trim().length > 0) {
+            try {
+                const response = await axios.post(
+                    `/api/notes/${_id}`,
+                    { note: editDetails },
+                    {
+                        headers: {
+                            authorization: encodedToken,
+                        },
+                    }
+                );
+                if (response.status === 201) {
+                    noteDispatch({
+                        type: "SET_NOTES",
+                        payload: response.data.notes,
+                    });
+                    toast.success("Note Edited");
+                    setShowEditModal({ state: false, note: {} });
                 }
-            );
-            if (response.status === 201) {
-                noteDispatch({
-                    type: "SET_NOTES",
-                    payload: response.data.notes,
-                });
-                authDispatch({
-                    type: "SET_TOAST",
-                    payload: {
-                        type: "snackbar-info",
-                        msg: "Note Edited",
-                        toastState: true,
-                    },
-                });
-                setShowEditModal({ state: false, note: {} });
+            } catch (err) {
+                toast.error(err.response.data.errors[0])
             }
-        } catch (err) {
-            console.log(err);
+        } else {
+            toast.error("Title cannot be empty");
         }
     };
 
