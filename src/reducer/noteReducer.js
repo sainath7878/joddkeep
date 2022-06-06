@@ -1,7 +1,8 @@
 const initialNoteState = {
     notes: [],
     trash: [],
-    archivedNotes: []
+    archivedNotes: [],
+    search: "",
 }
 
 const noteReducer = (state, { type, payload }) => {
@@ -14,6 +15,8 @@ const noteReducer = (state, { type, payload }) => {
             return { ...state, archivedNotes: payload }
         case "MOVE_TO_ARCHIVE":
             return { ...state, archivedNotes: payload.archives, notes: payload.notes }
+        case "SET_SEARCH":
+            return { ...state, search: payload.searchData }
         default:
             return state
     }

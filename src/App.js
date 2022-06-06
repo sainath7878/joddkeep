@@ -6,6 +6,7 @@ import { Header, Footer, Authorized, Sidebar, MainContainer } from "components/i
 import { useAuth } from 'context';
 import { useLocation } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
 import axios from 'axios';
 
