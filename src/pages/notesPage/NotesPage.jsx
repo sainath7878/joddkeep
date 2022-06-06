@@ -21,7 +21,7 @@ function NotesPage() {
         <>
           <h2 className="fs-ml">Pinned Notes</h2>
           <div className="display-notes-container">
-            {notes.map((note) => {
+            {searchedData.map((note) => {
               if (note.isPinned) {
                 return <DisplayNote key={note._id} note={note} />;
               }
@@ -34,7 +34,7 @@ function NotesPage() {
         <>
           <h2 className="fs-ml">Others</h2>
           <div className="display-notes-container">
-            {notes.map((note) => {
+            {searchedData.map((note) => {
               if (!note.isPinned) {
                 return <DisplayNote key={note._id} note={note} />;
               }
