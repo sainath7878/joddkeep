@@ -7,6 +7,13 @@ ul {
   width: 25rem;
   background-color: var(--SIDE-NAVBAR-COLOR);
   box-shadow: 1px 1px 7px 3px rgb(128 128 128 / 20%);
+  min-height: calc(100vh - 16rem);
+}
+
+.sidebar-list {
+  position: sticky;
+  top: 9rem;
+  left: 0;
 }
 
 .sidebar-item {
@@ -21,7 +28,7 @@ ul {
 }
 
 .active {
-  background-color: var(--SECONDARY-COLOR);
+  background-color: var(--SECONDARY-COLOR) !important;
   color: var(--BACKGROUND-COLOR);
 }
 
@@ -31,4 +38,27 @@ ul {
 
 .active:hover {
   color: var(--BACKGROUND-COLOR);
+}
+
+
+@media only screen and (max-width: 768px) {
+  .sidebar-responsive-hide {
+    display: none;
+  }
+  
+  .sidebar-responsive-show {
+    display: flex;
+    position: fixed;
+    top: 7rem;
+    left: 0;
+    z-index: var(--Z-INDEX-20);
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .sidebar {
+    width: 20rem;
+    min-height: calc(100vh - 8rem);
+  }
+
 }

@@ -10,7 +10,10 @@ function Archive({ note }) {
     <div className="display-notes" style={{ backgroundColor: color }}>
       <div className="display-notes-text">
         <h2 className="fs-m">{title}</h2>
-        <p className="fs-s">{description}</p>
+        <p
+          className="fs-s"
+          dangerouslySetInnerHTML={{ __html: description }}
+        ></p>
       </div>
       <p className="display-date">CREATED ON: {createdTime}</p>
       <div className="display-cta">

@@ -46,7 +46,10 @@ function LabelPage() {
     if (filters.oldest) {
       newData.sort((a, b) => getTime(a.createdDate) - getTime(b.createdDate));
     }
-    if (filters.all) {
+    if (
+      filters.all ||
+      (!filters.all && !filters.Personal && !filters.Work && !filters.Home)
+    ) {
       setFilteredData(newData);
     } else {
       const selectedLabels = labels.filter((item) => filters[item]);

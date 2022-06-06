@@ -1,12 +1,40 @@
 import { BiPin, BiPinFill } from "assets/icons/Icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ColorPalette } from "components/index";
 import "./editNote.css";
 import { useNotes } from "context";
+import ReactQuill from "react-quill";
 
 function EditNote() {
   const { showEditModal, updateNoteHandler, setShowEditModal } = useNotes();
   const [editDetails, setEditDetails] = useState(showEditModal.note);
+  const [description, setDescription] = useState(showEditModal.note.description);
+
+  useEffect(() => {
+    setEditDetails((prev) => ({ ...prev, description }));
+  }, [description]);
+
+  const modules = {
+    toolbar: [
+      [{ header: "1" }, { header: "2" }],
+      ["bold", "italic", "underline", "strike", "blockquote"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["link"],
+      ["clean"],
+    ],
+  };
+
+  const formats = [
+    "header",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "link",
+  ];
 
   return (
     <>
@@ -40,17 +68,14 @@ function EditNote() {
                 setEditDetails({ ...editDetails, title: e.target.value });
               }}
             ></textarea>
-            <textarea
-              rows="3"
-              placeholder="Take notes ...."
-              value={editDetails.description}
-              onChange={(e) => {
-                setEditDetails({
-                  ...editDetails,
-                  description: e.target.value,
-                });
-              }}
-            ></textarea>
+            <ReactQuill
+              theme="snow"
+              value={description}
+              onChange={setDescription}
+              placeholder={"Take notes ..."}
+              modules={modules}
+              formats={formats}
+            />
           </div>
           <div className="input-cta">
             <div className="input-cta-section d-flex">

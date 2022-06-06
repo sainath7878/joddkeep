@@ -2,17 +2,44 @@ import './App.css';
 import Mockman from "mockman-js";
 import { Routes, Route } from "react-router-dom";
 import { LandingPage, AuthorizationPage, NotesPage, ArchivePage, LabelPage, TrashPage, RestrictAuth, NotFound } from 'pages/index'
-import { Header, Footer, Authorized, Sidebar, MainContainer, Toast } from "components/index"
+import { Header, Footer, Authorized, Sidebar, MainContainer } from "components/index"
 import { useAuth } from 'context';
 import { useLocation } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import { useEffect } from 'react';
+import axios from 'axios';
 
 function App() {
-  const { authState } = useAuth();
+  const { authState, authDispatch } = useAuth();
   const location = useLocation()
+  const encodedToken = localStorage.getItem("token");
+  useEffect(() => {
+    if (encodedToken) {
+      (async () => {
+        try {
+          const response = await axios.post("/api/auth/verify",
+            { encodedToken }
+          )
+          if (response.status === 201) {
+            authDispatch({
+              type: "SET_USER", payload: {
+                encodedToken, isLoggedIn: true, email: response.data.email,
+                firstName: response.data.firstName,
+              }
+            })
+          }
+        }
+        catch (err) {
+          console.log(err)
+        }
+      })()
+
+    }
+  }, [])
   return (
     <div className="App">
       <Header />
-      {authState.toast.toastState && <Toast />}
+      <ToastContainer theme="colored" autoClose={2000} position="top-right" className="fs-s" />
       <MainContainer>
         {location.pathname !== "/" && authState.isLoggedIn && <Sidebar />}
         <Routes>

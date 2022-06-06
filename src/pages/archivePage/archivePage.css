@@ -1,4 +1,11 @@
-.archive{
-    width: 100%;
-    margin: 4rem 2rem 2rem 5rem;
+.archive {
+  width: 100%;
+  margin: 4rem 2rem 2rem 5rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .archive {
+    margin: 2rem auto;
+    padding: 0 2rem;
+  }
 }
