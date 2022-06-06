@@ -55,7 +55,7 @@ function Header() {
             </p>
           </Link>
         </div>
-        {location.pathname !== "/" && (
+        {location.pathname !== "/" && location.pathname !== "/signin" && location.pathname !== "/signup" && (
           <div className="search">
             <input
               type="text"

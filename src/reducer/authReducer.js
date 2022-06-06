@@ -16,6 +16,7 @@ const authReducer = (authState, { type, payload }) => {
         case "SET_USER":
             return { ...authState, isLoggedIn: payload.isLoggedIn, email: payload.email, encodedToken: payload.encodedToken, firstName: payload.firstName, _id: payload._id }
         case "LOGOUT":
+            localStorage.removeItem("token");
             return { ...authState, isLoggedIn: false, email: "", encodedToken: "", firstName: "" }
         case "SET_TOAST":
             return { ...authState, toast: { type: payload.type, msg: payload.msg, toastState: payload.toastState } }
