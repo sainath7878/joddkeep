@@ -8,7 +8,9 @@ import ReactQuill from "react-quill";
 function EditNote() {
   const { showEditModal, updateNoteHandler, setShowEditModal } = useNotes();
   const [editDetails, setEditDetails] = useState(showEditModal.note);
-  const [description, setDescription] = useState(showEditModal.note.description);
+  const [description, setDescription] = useState(
+    showEditModal.note.description
+  );
 
   useEffect(() => {
     setEditDetails((prev) => ({ ...prev, description }));

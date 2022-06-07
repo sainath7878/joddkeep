@@ -122,8 +122,7 @@ function NewNote() {
           className="btn btn-secondary fs-s"
           type="button"
           onClick={() => {
-            addNewNoteHandler(formDetails, setFormDetails);
-            setDescription(() => "");
+            addNewNoteHandler(formDetails, setFormDetails, setDescription);
           }}
         >
           Add

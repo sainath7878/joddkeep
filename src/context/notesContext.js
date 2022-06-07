@@ -39,7 +39,7 @@ function NotesProvider({ children }) {
         }
     }, [encodedToken, isLoggedIn]);
 
-    const addNewNoteHandler = async (formDetails, setFormDetails) => {
+    const addNewNoteHandler = async (formDetails, setFormDetails, setDescription) => {
         if (formDetails.label === "") {
             formDetails = { ...formDetails, label: "Home" };
         }
@@ -62,23 +62,25 @@ function NotesProvider({ children }) {
                 if (response.status === 201) {
                     noteDispatch({ type: "SET_NOTES", payload: response.data.notes });
                     toast.success("Note Added");
+                    setFormDetails({
+                        title: "",
+                        description: "",
+                        label: "",
+                        priority: "",
+                        color: "#fff",
+                        isPinned: false,
+                    });
+                    setDescription(() => "");
+
                 }
             } catch (err) {
                 toast.error(err.response.data.errors[0])
             }
-            setFormDetails({
-                title: "",
-                description: "",
-                label: "",
-                priority: "",
-                color: "#fff",
-                isPinned: false,
-            });
+
         }
         else {
             toast.error("Title cannot be empty");
         }
-
     };
 
     const removeNoteHandler = async (note) => {
